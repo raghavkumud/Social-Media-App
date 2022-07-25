@@ -3,7 +3,8 @@
 /frontend/node_modules
 /frontend/.pnp
 /frontend/.pnp.js
-
+/frontend/package.json
+/frontend/package-lock.json
 /frontend/coverage
 
 /frontend/build
