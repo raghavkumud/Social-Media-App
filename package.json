@@ -22,5 +22,9 @@
     "nodemailer": "^6.7.5",
     "nodemon": "^2.0.16",
     "path": "^0.12.7"
+  },
+  "engines": {
+    "npm": "6.x",
+    "node": "16.x"
   }
 }
