@@ -1,7 +1,7 @@
 import { Avatar, Typography, Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import "./UpdateProfile.css";
-import {  loadUser, updateProfile } from "../../Actions/User";
+import { loadUser, updateProfile } from "../../Actions/User";
 import { useAlert } from "react-alert";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../Loader/Loader";
@@ -20,18 +20,18 @@ const UpdateProfile = () => {
   const alert = useAlert();
   useEffect(() => {
     if (error) {
-        alert.error(error);
-        dispatch({type: "clearErrors"});
+      alert.error(error);
+      dispatch({ type: "clearErrors" });
     }
 
     if (updateError) {
-        alert.error(updateError);
-        dispatch({type: "clearErrors"});
+      alert.error(updateError);
+      dispatch({ type: "clearErrors" });
     }
     if (message) {
-        alert.success(message);
+      alert.success(message);
     }
-  }, [dispatch, error, updateError, alert, message ])
+  }, [dispatch, error, updateError, alert, message]);
   const submitHandler = async (e) => {
     e.preventDefault();
     await dispatch(updateProfile(name, email, avatar));
@@ -49,19 +49,24 @@ const UpdateProfile = () => {
     };
     Reader.readAsDataURL(file);
   };
-  return (
-    loading ? <Loader/> : 
+  return loading ? (
+    <Loader />
+  ) : (
     <div className="updateProfile">
       <form className="updateProfileForm" onSubmit={(e) => submitHandler(e)}>
-        <Typography variant="h3" style={{ padding: "2vmax" }}>
-          Social App
-        </Typography>
         <Avatar
           src={avatarPrev}
           alt="User"
           sx={{ height: "10vmax", width: "10vmax" }}
         />
-        <input type="file" accept="image/*" onChange={(e) => handleImageChange(e)} />
+        <input
+          type="file"
+          id="profileImage"
+          accept="image/*"
+          className="imageInp"
+          onChange={(e) => handleImageChange(e)}
+        />
+        <label for="profileImage">Choose a profile picture</label>
         <input
           type="text"
           value={name}
@@ -78,7 +83,11 @@ const UpdateProfile = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <Button disabled={updateLoading ? true : false} type="submit">
+        <Button
+          id="updateBtn"
+          disabled={updateLoading ? true : false}
+          type="submit"
+        >
           Update
         </Button>
       </form>

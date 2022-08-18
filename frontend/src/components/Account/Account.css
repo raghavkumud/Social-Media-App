@@ -6,8 +6,7 @@
 }
 
 .accountleft {
-  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
-
+  background-image: linear-gradient(135deg, #ff99ff 3%, #0000ff);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,7 +38,7 @@
 .accountright > a {
   color: rgb(73, 73, 73);
   text-decoration: none;
-  font: 100 1.2rem "Roboto";
+  font: normal 1.2rem var(--defaultFont);
   text-align: center;
   margin-top: 2vmax;
   padding: 0.5vmax 1vmax;
@@ -66,7 +65,11 @@
   transition: all 0.5s;
   padding: 0.5vmax 1vmax;
 }
-
+.linkBtn {
+  font-size: 1rem;
+  font-family: var(--defaultFont);
+  font-weight: 500;
+}
 @media screen and (max-width: 600px) {
   .account {
     grid-template-columns: 2fr 1fr;
@@ -78,7 +81,7 @@
   }
 
   .accountright > a {
-    font: 100 1rem "Roboto";
+    font: normal 1rem var(--defaultFont);
     margin-top: 6vw;
   }
 }

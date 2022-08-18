@@ -6,8 +6,7 @@
 }
 
 .homeleft {
-  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
-
+  background-image: linear-gradient(135deg, #ff99ff 3%, #0000ff);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -15,6 +14,7 @@
   padding: 2vmax;
   box-sizing: border-box;
 }
+
 .homeright {
   padding: 2vmax;
   box-sizing: border-box;

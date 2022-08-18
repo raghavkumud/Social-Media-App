@@ -43,9 +43,6 @@ const Register = () => {
   return (
     <div className="register">
       <form  className="registerForm" onSubmit={(e) => submitHandler(e)}>
-        <Typography variant="h3" style={{ padding: "2vmax" }}>
-          Social App
-        </Typography>
         <Avatar
           src={avatar}
           alit="User"
@@ -79,7 +76,7 @@ const Register = () => {
         <Link to="/">
             <Typography>Already signed up! Login Now</Typography>
         </Link>
-        <Button disabled = {loading ? true : false} type="submit">Register</Button>
+        <Button id="regBtn" disabled = {loading ? true : false} type="submit">Register</Button>
       </form>
     </div>
   );

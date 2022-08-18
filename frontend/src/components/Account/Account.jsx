@@ -93,8 +93,8 @@ const Account = () => {
           <Typography>{user.posts.length}</Typography>
         </div>
         <Button variant="contained" onClick={() => logOutHandler()}>LogOut</Button>
-        <Link to="/update/profile">Edit Profile</Link>
-        <Link to="/update/password">Change Password</Link>
+        <Link className="linkBtn" to="/update/profile">Edit Profile</Link>
+        <Link className="linkBtn" to="/update/password">Change Password</Link>
 
         <Button
         disabled = {deleteLoading ? true : false}

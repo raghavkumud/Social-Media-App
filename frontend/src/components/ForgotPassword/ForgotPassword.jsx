@@ -29,9 +29,6 @@ const ForgotPassword = () => {
   return (
     <div className="forgotPassword">
       <form className="forgotPasswordForm" onSubmit={submitHandler}>
-        <Typography variant="h3" style={{ padding: "2vmax" }}>
-          Social App
-        </Typography>
         <input
           type="email"
           placeholder="Email"
@@ -40,7 +37,7 @@ const ForgotPassword = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <Button disabled={loading ? true : false} type="submit">
+        <Button id="tokenBtn" disabled={loading ? true : false} type="submit">
           Send Token
         </Button>
       </form>

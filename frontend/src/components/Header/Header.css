@@ -14,10 +14,10 @@
 .header > a > svg {
     font-size: 2vmax;
     transition: all 0.5s;
-    color: purple;
+    color: #0040ff;
 }
 .header > a > svg:hover {
-    color: palevioletred;
+    color: #99b3ff;
     transform: scale(1.2);
 }
 @media screen and (max-width: 600px) {
@@ -33,7 +33,7 @@
     font-size: 8vw;
    }
    .header > a > svg:hover {
-    color: palevioletred;
+    color: #99b3ff;
     transform: scale(1.2);
    }
 }

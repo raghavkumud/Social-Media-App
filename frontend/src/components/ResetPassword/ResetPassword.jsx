@@ -47,7 +47,7 @@ const ResetPassword = () => {
         <Link to="/forgot/password">
           <Typography>Request Another Token !</Typography>
         </Link>
-        <Button disabled={loading ? true : false} type="submit">
+        <Button id="resPassBtn" disabled={loading ? true : false} type="submit">
           Reset Password
         </Button>
       </form>

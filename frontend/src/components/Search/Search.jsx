@@ -18,9 +18,6 @@ const Search = () => {
   return (
     <div className="search">
       <form className="searchForm" onSubmit={(e) => submitHandler(e)}>
-        <Typography variant="h3" style={{ padding: "2vmax" }}>
-          Social App
-        </Typography>
         <input
           type="text"
           value={name}
@@ -28,7 +25,12 @@ const Search = () => {
           placeholder="Name"
           required
         />
-        <Button disabled={usersLoading} type="submit">
+        <Button
+          id ="searchBtn"
+          variant="contained"
+          disabled={usersLoading}
+          type="submit"
+        >
           Search
         </Button>
         <div className="searchResults">

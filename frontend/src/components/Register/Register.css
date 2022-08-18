@@ -1,20 +1,19 @@
 .register {
-  min-height: 100vh;
-  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
+  background-image: linear-gradient(135deg, #ff99ff 3%, #0000ff);
 
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2vmax;
+  padding: 20px;
   box-sizing: border-box;
 }
 
 .registerForm {
   background-color: white;
-  width: 50%;
-  border-radius: 30px;
+  width: 40%;
+  border-radius: 10px;
   box-sizing: border-box;
-  padding: 2vmax;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,31 +21,41 @@
 
 .registerInputs {
   box-sizing: border-box;
-  padding: 1vmax 2vmax;
+  padding: 10px 20px;
   width: 80%;
   border-radius: 40px;
   border: 1px solid #ccc;
-  margin: 2vmax;
-  font: 100 1.2rem "Roboto", sans-serif;
+  margin: 15px;
+  font: normal 1rem var(--defaultFont);
   outline: none;
 }
 
-.registerForm > input[type="file"] {
+.registerForm>input[type="file"] {
   border-radius: 30px;
   margin: 2vmax;
 }
 
-.registerForm > input[type="file"]::-webkit-file-upload-button {
+#regBtn {
+  color: white;
+  background-color: blueviolet;
+}
+
+#regBtn:hover {
+  color: white;
+  background-color: blueviolet;
+}
+
+.registerForm>input[type="file"]::-webkit-file-upload-button {
   background-color: rgb(38, 63, 173);
   color: white;
   width: 100%;
   padding: 1vmax;
   border-radius: 30px;
   border: none;
-  font: 100 1.2rem "Roboto", sans-serif;
+  font: normal 1rem var(--defaultFont);
 }
 
-.registerForm > a {
+.registerForm>a {
   align-self: flex-end;
   text-decoration: none;
   color: rgba(0, 0, 0, 0.342);
@@ -58,22 +67,22 @@
     width: 100%;
   }
 
-  .registerForm > input {
+  .registerForm>input {
     padding: 4vw 8vw;
     margin: 2vmax;
-    font: 100 1.2rem "Roboto", sans-serif;
+    font: normal 1.2rem var(--defaultFont);
     margin: 4vw;
   }
 
-  .registerForm > input[type="file"] {
+  .registerForm>input[type="file"] {
     width: 100%;
   }
 
-  .registerForm > input[type="file"]::-webkit-file-upload-button {
+  .registerForm>input[type="file"]::-webkit-file-upload-button {
     width: 70%;
   }
 
-  .registerForm > a {
+  .registerForm>a {
     align-self: center;
     text-decoration: none;
     color: rgba(0, 0, 0, 0.342);
