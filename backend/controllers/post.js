@@ -187,7 +187,6 @@ exports.deletePost = async (req, res) => {
 exports.likeAndUnlikePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
-    console.log(req.params.id);
     if (!post) {
       return res.status(404).json({
         success: false,

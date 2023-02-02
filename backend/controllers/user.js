@@ -29,7 +29,6 @@ exports.register = async (req, res) => {
       httpOnly: true,
     };
     const token = await user.generateToken();
-    console.log(user, "user");
     return res.status(200).cookie("token", token, options).json({
       success: true,
       user,
@@ -72,7 +71,6 @@ exports.login = async (req, res) => {
       token,
     });
   } catch (err) {
-    console.log(err);
     return res.status(500).json({
       success: false,
       message: err.message,
@@ -164,8 +162,6 @@ exports.followUser = async (req, res) => {
   try {
     const userToFollow = await User.findById(req.params.id);
     const loggedInUser = await User.findById(req.user._id);
-    console.log(userToFollow);
-    console.log(loggedInUser);
     if (!userToFollow) {
       return res.status(404).json({
         success: false,
@@ -216,7 +212,6 @@ exports.getPostOfFollowing = async (req, res) => {
         $in: user.following,
       },
     }).populate("owner likes comments.user");
-    console.log(posts);
     res.status(200).json({
       success: true,
       posts: posts.reverse(),
@@ -322,7 +317,6 @@ exports.getUserProfile = async (req, res) => {
         message: "User not found",
       });
     }
-    console.log("user in userProfile", user);
 
     res.status(200).json({
       success: true,
@@ -341,7 +335,6 @@ exports.getAllUsers = async (req, res) => {
     const users = await User.find({
       name: { $regex: req.query.name, $options: "i" },
     });
-    console.log(users);
     res.status(200).json({
       success: false,
       users,
@@ -370,8 +363,6 @@ exports.forgotPassword = async (req, res) => {
     const resetUrl = `${req.protocol}://${req.get(
       "x-forwarded-host"
     )}/password/reset/${resetPasswordToken}`;
-    console.log(resetUrl);
-    console.log(req);
 
     const message = `Reset Your Password by clicking on the link below: \n\n ${resetUrl}`;
 

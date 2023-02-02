@@ -13,7 +13,6 @@ export const loginUser = (email, password) => async (dispatch) => {
         },
       }
     );
-    console.log(data);
     dispatch({
       type: "LoginSuccess",
       payload: data.user,
@@ -31,7 +30,6 @@ export const logOutUser = () => async (dispatch) => {
       type: "LogOutUserRequest",
     });
     const { data } = await axios.get("api/v1/logOut");
-    console.log(data);
     dispatch({
       type: "LogOutUserSuccess",
       payload: data.user,
@@ -69,7 +67,6 @@ export const getFollowingPosts = () => async (dispatch) => {
       type: "PostOfFollowingRequest",
     });
     const { data } = await axios.get("/api/v1/posts");
-    console.log(data);
     dispatch({
       type: "PostOfFollowingSuccess",
       payload: data.posts,
@@ -105,7 +102,6 @@ export const getMyPosts = () => async (dispatch) => {
       type: "myPostsRequest",
     });
     const { data } = await axios.get("/api/v1/my/posts");
-    console.log(data);
     dispatch({
       type: "myPostsSuccess",
       payload: data.posts,
@@ -132,13 +128,11 @@ export const registerUser =
           },
         }
       );
-      console.log(data);
       dispatch({
         type: "RegisterSuccess",
         payload: data.user,
       });
     } catch (error) {
-      console.log(error);
       dispatch({
         type: "RegisterFailure",
         payload: error.response.data.message,
@@ -159,7 +153,6 @@ export const updateProfile = (name, email, avatar) => async (dispatch) => {
         },
       }
     );
-    console.log(data);
     dispatch({
       type: "updateProfileSuccess",
       payload: data.message,
@@ -186,7 +179,6 @@ export const updatePassword =
           },
         }
       );
-      console.log(data);
       dispatch({
         type: "updatePasswordSuccess",
         payload: data.message,
@@ -205,7 +197,6 @@ export const deleteMyProfile = () => async (dispatch) => {
       type: "deleteProfileRequest",
     });
     const { data } = await axios.delete("/api/v1/delete/me");
-    console.log(data);
     dispatch({
       type: "deleteProfileSuccess",
       payload: data.message,
@@ -280,7 +271,6 @@ export const getUserPosts = (id) => async (dispatch) => {
       type: "userPostsRequest",
     });
     const { data } = await axios.get(`/api/v1/userposts/${id}`);
-    console.log(data, "data in getUserPosts");
     dispatch({
       type: "userPostsSuccess",
       payload: data.posts,
