@@ -58,6 +58,9 @@ export const userReducer = createReducer(initialState, {
     state.error = action.payload;
     state.isAuthenticated = true;
   },
+  ClearErrors: (state) => {
+    state.error = null;
+  },
 });
 export const postOfFollowingReducer = createReducer(initialState, {
   PostOfFollowingRequest: (state) => {

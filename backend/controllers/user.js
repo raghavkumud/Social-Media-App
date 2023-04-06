@@ -130,14 +130,17 @@ exports.updateProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
     const { name, email, avatar } = req.body;
-
+    console.log({
+      name,
+      email,
+      avatar,
+    });
     if (name) {
       user.name = name;
     }
     if (email) {
       user.email = email;
     }
-    // User Avatar : TODO
     if (avatar) {
       await cloudinary.v2.uploader.destroy(user.avatar.public_id);
       const myCloud = await cloudinary.v2.uploader.upload(avatar, {
@@ -225,7 +228,10 @@ exports.getPostOfFollowing = async (req, res) => {
 };
 exports.deleteMyProfile = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
+    console.log({
+      user: req.user,
+    });
+    const user = await User.findById(req.user._id.toString());
     const posts = user.posts;
     const followers = user.followers;
     const following = user.following;
@@ -270,7 +276,7 @@ exports.deleteMyProfile = async (req, res) => {
     for (let i = 0; i < allPosts.length; i++) {
       const post = await Post.findById(posts[i]._id);
 
-      for (let j = 0; j < allPosts.comments.length(); i++) {
+      for (let j = 0; j < post.comments.length(); i++) {
         if (post.comments[j].user == userId) {
           post.comments.splice(j, 1);
           await post.save();
@@ -332,11 +338,15 @@ exports.getUserProfile = async (req, res) => {
 
 exports.getAllUsers = async (req, res) => {
   try {
+    let searchKeyword = req.query.name;
+    if (!req.query.name) {
+      searchKeyword = ".*";
+    }
     const users = await User.find({
-      name: { $regex: req.query.name, $options: "i" },
+      name: { $regex: searchKeyword, $options: "i" },
     });
     res.status(200).json({
-      success: false,
+      success: true,
       users,
     });
   } catch (err) {

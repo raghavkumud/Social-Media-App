@@ -5,7 +5,7 @@ export const loginUser = (email, password) => async (dispatch) => {
       type: "LoginRequest",
     });
     const { data } = await axios.post(
-      "/api/v1/login",
+      "users/login",
       { email, password },
       {
         headers: {
@@ -20,7 +20,7 @@ export const loginUser = (email, password) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "LoginFailure",
-      payload: error.response.data.message,
+      payload: error.message,
     });
   }
 };
@@ -29,7 +29,7 @@ export const logOutUser = () => async (dispatch) => {
     dispatch({
       type: "LogOutUserRequest",
     });
-    const { data } = await axios.get("api/v1/logOut");
+    const { data } = await axios.get("/users/logOut");
     dispatch({
       type: "LogOutUserSuccess",
       payload: data.user,
@@ -37,22 +37,21 @@ export const logOutUser = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "LogOutUserFailure",
-      payload: error.response.data.message,
+      payload: error.message,
     });
   }
 };
 
-export const loadUser = (email, password) => async (dispatch) => {
+export const loadUser = () => async (dispatch) => {
   try {
     dispatch({
       type: "LoadUserRequest",
     });
-    const { data } = await axios.get("/api/v1/me");
+    const { data } = await axios.get("/users/me");
     dispatch({
       type: "LoadUserSuccess",
       payload: data.user,
     });
-    console.log(data);
   } catch (error) {
     dispatch({
       type: "LoadUserFailure",
@@ -66,7 +65,7 @@ export const getFollowingPosts = () => async (dispatch) => {
     dispatch({
       type: "PostOfFollowingRequest",
     });
-    const { data } = await axios.get("/api/v1/posts");
+    const { data } = await axios.get("/posts");
     dispatch({
       type: "PostOfFollowingSuccess",
       payload: data.posts,
@@ -78,30 +77,32 @@ export const getFollowingPosts = () => async (dispatch) => {
     });
   }
 };
-export const getAllUsers = (name = "") => async (dispatch) => {
-  try {
-    dispatch({
-      type: "allUsersRequest",
-    });
-    const { data } = await axios.get(`/api/v1/users?name=${name}`);
-    dispatch({
-      type: "allUsersSuccess",
-      payload: data.users,
-    });
-  } catch (error) {
-    dispatch({
-      type: "allUsersFailure",
-      payload: error.response.data.message,
-    });
-  }
-};
+export const getAllUsers =
+  (name = "") =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: "allUsersRequest",
+      });
+      const { data } = await axios.get(`users?name=${name}`);
+      dispatch({
+        type: "allUsersSuccess",
+        payload: data.users,
+      });
+    } catch (error) {
+      dispatch({
+        type: "allUsersFailure",
+        payload: error.response.data.message,
+      });
+    }
+  };
 
 export const getMyPosts = () => async (dispatch) => {
   try {
     dispatch({
       type: "myPostsRequest",
     });
-    const { data } = await axios.get("/api/v1/my/posts");
+    const { data } = await axios.get("/users/my/posts");
     dispatch({
       type: "myPostsSuccess",
       payload: data.posts,
@@ -120,7 +121,7 @@ export const registerUser =
         type: "RegisterRequest",
       });
       const { data } = await axios.post(
-        "/api/v1/register",
+        "/users/register",
         { name, email, password, avatar },
         {
           headers: {
@@ -135,7 +136,7 @@ export const registerUser =
     } catch (error) {
       dispatch({
         type: "RegisterFailure",
-        payload: error.response.data.message,
+        payload: error.response,
       });
     }
   };
@@ -145,7 +146,7 @@ export const updateProfile = (name, email, avatar) => async (dispatch) => {
       type: "updateProfileRequest",
     });
     const { data } = await axios.put(
-      "/api/v1/update/profile",
+      "/users/update/profile",
       { name, email, avatar },
       {
         headers: {
@@ -171,7 +172,7 @@ export const updatePassword =
         type: "updatePasswordRequest",
       });
       const { data } = await axios.put(
-        "/api/v1/update/password",
+        "/users/update/password",
         { oldPassword, newPassword },
         {
           headers: {
@@ -196,7 +197,7 @@ export const deleteMyProfile = () => async (dispatch) => {
     dispatch({
       type: "deleteProfileRequest",
     });
-    const { data } = await axios.delete("/api/v1/delete/me");
+    const { data } = await axios.delete("/users/delete/me");
     dispatch({
       type: "deleteProfileSuccess",
       payload: data.message,
@@ -215,7 +216,7 @@ export const forgotPassword = (email) => async (dispatch) => {
       type: "forgotPasswordRequest",
     });
     const { data } = await axios.post(
-      "/api/v1/forgot/password",
+      "/users/forgot/password",
       {
         email,
       },
@@ -243,7 +244,7 @@ export const resetPassword = (token, password) => async (dispatch) => {
       type: "resetPasswordRequest",
     });
     const { data } = await axios.put(
-      `/api/v1/password/reset/${token}`,
+      `/users/password/reset/${token}`,
       {
         password,
       },
@@ -270,7 +271,7 @@ export const getUserPosts = (id) => async (dispatch) => {
     dispatch({
       type: "userPostsRequest",
     });
-    const { data } = await axios.get(`/api/v1/userposts/${id}`);
+    const { data } = await axios.get(`/users/userposts/${id}`);
     dispatch({
       type: "userPostsSuccess",
       payload: data.posts,
@@ -288,7 +289,7 @@ export const getUserProfile = (id) => async (dispatch) => {
     dispatch({
       type: "userProfileRequest",
     });
-    const { data } = await axios.get(`/api/v1/user/${id}`);
+    const { data } = await axios.get(`/users/user/${id}`);
     dispatch({
       type: "userProfileSuccess",
       payload: data.user,
@@ -306,7 +307,7 @@ export const followAndUnfollowUser = (id) => async (dispatch) => {
     dispatch({
       type: "followUserRequest",
     });
-    const { data } = await axios.get(`/api/v1/follow/${id}`);
+    const { data } = await axios.get(`/users/follow/${id}`);
     dispatch({
       type: "followUserSuccess",
       payload: data.message,

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   getUserPosts,
   getUserProfile,
@@ -40,6 +41,7 @@ const UserProfile = () => {
   const [myProfile, setMyProfile] = useState(false);
   const alert = useAlert();
   const params = useParams();
+  const navigate = useNavigate();
   const followHandler = async (e) => {
     e.preventDefault();
 
@@ -73,7 +75,7 @@ const UserProfile = () => {
       alert.success(message);
       dispatch({ type: "clearMessage" });
     }
-  }, [alert, followError, message, userError, dispatch]);
+  }, [alert, followError, message, userError, dispatch, postError]);
   const logOutHandler = async () => {
     await dispatch(logOutUser());
     alert.success("Logged Out Successfully");
@@ -90,7 +92,9 @@ const UserProfile = () => {
 
   const deleteProfileHandler = async (e) => {
     await dispatch(deleteMyProfile());
-    dispatch(logOutUser());
+    alert.success("Profile Deleted Successfully");
+    await dispatch(logOutUser());
+    navigate('/');
   };
   return loading || userLoading ? (
     <Loader />

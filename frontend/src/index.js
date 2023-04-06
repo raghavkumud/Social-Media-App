@@ -7,18 +7,18 @@ import { Provider as AlertProvider, positions, transitions } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 import { createTheme, ThemeProvider } from "@mui/material";
 const options = {
-  position: positions.BOTTOM_CENTER,
-  timeout: 5000,
-  transition: transitions.SCALE,
+  position: positions.TOP_CENTER,
+  timeout: 2000,
+  transition: transitions.FADE,
 };
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const theme = createTheme({
   typography: {
-    fontFamily: ["Poppins", '"Seoge UI"'].join(","),
+    fontFamily: ['Varela Round',  'Seoge UI' ].join(","),
   },
   link: {
-    fontFamily: ["Poppins", '"Seoge UI"'].join(","),
-    fontWeight: '500',
+    fontFamily: ['Varela Round', 'Seoge UI'].join(","),
+    fontWeight: "500",
   },
 });
 root.render(

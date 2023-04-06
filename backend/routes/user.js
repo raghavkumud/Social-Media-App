@@ -17,6 +17,7 @@ const {
 } = require("../controllers/user");
 const { isAuthenticated } = require("../middleware/auth");
 const router = express.Router();
+router.route("/").get(isAuthenticated, getAllUsers);
 router.route("/register").post(register);
 router.route("/login").post(login);
 router.route("/logout").get(logOut);
@@ -34,8 +35,6 @@ router.route("/my/posts").get(isAuthenticated, getMyPosts);
 router.route("/userposts/:id").get(isAuthenticated, getUserPosts);
 
 router.route("/user/:id").get(isAuthenticated, getUserProfile);
-
-router.route("/users").get(isAuthenticated, getAllUsers);
 
 router.route("/forgot/password").post(forgotPassword);
 router.route("/password/reset/:token").put(resetPassword);
