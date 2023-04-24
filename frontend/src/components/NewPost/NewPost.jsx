@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Typography } from "@mui/material";
 
 import "./NewPost.css";
+import SpinningLoader from "../SpinningLoader/SpinningLoader";
 import { useSelector, useDispatch } from "react-redux";
 import { createNewPost } from "../../Actions/Post";
 import { useAlert } from "react-alert";
@@ -62,6 +63,7 @@ const NewPost = () => {
         <Button id="addPostBtn" type="submit" disabled={loading ? true : false}>
           Post
         </Button>
+        {loading && <SpinningLoader />}
       </form>
     </div>
   );

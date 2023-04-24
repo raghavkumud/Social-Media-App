@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import {
   getUserPosts,
   getUserProfile,
-  loadUser,
   logOutUser,
   deleteMyProfile,
   followAndUnfollowUser,
@@ -12,7 +10,7 @@ import {
 import Loader from "../Loader/Loader";
 import Post from "../Post/Post";
 import { Avatar, Typography, Button, Dialog } from "@mui/material";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import User from "../User/User";
 const UserProfile = () => {
@@ -78,6 +76,7 @@ const UserProfile = () => {
   }, [alert, followError, message, userError, dispatch, postError]);
   const logOutHandler = async () => {
     await dispatch(logOutUser());
+    navigate('/')
     alert.success("Logged Out Successfully");
   };
   useEffect(() => {

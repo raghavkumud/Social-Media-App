@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import "./ForgotPassword.css";
-import { Typography, Button } from "@mui/material";
+import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { forgotPassword } from "../../Actions/User";
 import { useAlert } from "react-alert";

@@ -12,7 +12,6 @@ import { Avatar, Typography, Button, Dialog } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addCommentOnPost, likePost, updateCaption, deletePost } from "../../Actions/Post";
-import { useAlert } from "react-alert";
 import { getFollowingPosts, getMyPosts, loadUser } from "../../Actions/User";
 import CommentCard from "../CommentCard/CommentCard";
 const Post = ({
@@ -29,7 +28,6 @@ const Post = ({
 }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
-  const alert = useAlert();
   const [liked, setLiked] = useState(false);
   const [likesUser, setLikesUser] = useState(false);
 
@@ -37,7 +35,6 @@ const Post = ({
   const [commentToggle, setCommentToggle] = useState(false);
   const [captionValue, setCaptionValue] = useState(caption);
   const [captionToggle, setCaptionToggle] = useState(false);
-  const { error, message } = useSelector((state) => state.like);
   const handleLike = async () => {
     setLiked(!liked);
     await dispatch(likePost(postId));

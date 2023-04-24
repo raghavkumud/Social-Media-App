@@ -1,5 +1,5 @@
 import { Avatar, Typography, Button } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./Register.css";
 import { registerUser } from "../../Actions/User";
@@ -11,9 +11,11 @@ const Register = () => {
   const [avatar, setAvatar] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(registerUser(name, email, password, avatar));
+    navigate("/");
   };
   const { loading, error, message } = useSelector((state) => state.user);
   const handleImageChange = (e) => {
@@ -47,9 +49,15 @@ const Register = () => {
         <Avatar
           src={avatar}
           alit="User"
-          sx={{ height: "10vmax", width: "10vmax" }}
+          sx={{ height: "100px", width: "100px" }}
         />
-        <input type="file" accept="image/*" onChange={handleImageChange} required />
+        <span for="avatar">Upload a profile picture</span>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          required
+        />
         <input
           type="text"
           value={name}

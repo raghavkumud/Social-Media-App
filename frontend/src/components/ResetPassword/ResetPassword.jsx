@@ -29,13 +29,10 @@ const ResetPassword = () => {
   return (
     <div className="resetPassword">
       <form className="resetPasswordForm" onSubmit={(e) => submitHandler(e)}>
-        <Typography variant="h3" style={{ padding: "2vmax" }}>
-          Social App
-        </Typography>
         <input
           className="resetPasswordInputs"
           type="password"
-          placeholder="New Password"
+          placeholder="Enter New Password"
           required
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}

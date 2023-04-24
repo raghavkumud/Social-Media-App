@@ -1,4 +1,4 @@
-import React, { useEffect, useSyncExternalStore } from 'react';
+import React, { useEffect  } from 'react';
 import './Home.css';
 import User from '../User/User';
 import Post from '../Post/Post';
@@ -11,7 +11,6 @@ export default function HomePage() {
     const dispatch = useDispatch();
     const {loading, posts, error} = useSelector(state => state.postOfFollowing);
     const {users, usersLoading} = useSelector((state) => state.allUsers)
-    console.log("posts in Home.jsx", posts);
     const {error: likeError, message} = useSelector((state) => state.like);
     const alert = useAlert();
     useEffect(() => {

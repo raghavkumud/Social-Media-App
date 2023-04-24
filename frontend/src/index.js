@@ -14,10 +14,10 @@ const options = {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const theme = createTheme({
   typography: {
-    fontFamily: ['Varela Round',  'Seoge UI' ].join(","),
+    fontFamily: ["Montserrat", "Seoge UI"].join(","),
   },
   link: {
-    fontFamily: ['Varela Round', 'Seoge UI'].join(","),
+    fontFamily: ["Montserrat", "Seoge UI"].join(","),
     fontWeight: "500",
   },
 });

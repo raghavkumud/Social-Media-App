@@ -2,6 +2,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const compression = require("compression");
 const dotenv = require("dotenv");
+const path = require("path");
 
 const app = express();
 dotenv.config({ path: __dirname + "/config/config.env" });
@@ -16,5 +17,9 @@ const userRoute = require("./routes/user");
 
 app.use("/users", userRoute);
 app.use("/", postRoute);
-
+const dirPath = path.normalize(path.join(__dirname, "..", "frontend", "build"));
+app.use(express.static(dirPath));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(dirPath, "index.html"));
+});
 module.exports = app;

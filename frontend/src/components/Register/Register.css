@@ -1,6 +1,6 @@
 .register {
   background-image: linear-gradient(135deg, #ff99ff 3%, #0000ff);
-
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,8 +10,8 @@
 
 .registerForm {
   background-color: white;
-  width: 40%;
-  border-radius: 10px;
+  width: 25%;
+  border-radius: 5px;
   box-sizing: border-box;
   padding: 20px;
   display: flex;
@@ -19,20 +19,24 @@
   align-items: center;
 }
 
+.registerForm>span {
+  font: normal 1.1rem var(--defaultFont);
+  margin-top: 10px;
+}
+
 .registerInputs {
   box-sizing: border-box;
-  padding: 10px 20px;
+  padding: 10px 10px;
   width: 80%;
-  border-radius: 40px;
+  border-radius: 5px;
   border: 1px solid #ccc;
-  margin: 15px;
+  margin: 10px;
   font: normal 1rem var(--defaultFont);
-  outline: none;
 }
 
 .registerForm>input[type="file"] {
-  border-radius: 30px;
-  margin: 2vmax;
+  border-radius: 10px;
+  margin: 10px;
 }
 
 #regBtn {
@@ -46,13 +50,16 @@
 }
 
 .registerForm>input[type="file"]::-webkit-file-upload-button {
-  background-color: rgb(38, 63, 173);
+  background-color: gainsboro;
+  background-color: #0000ff;
   color: white;
-  width: 100%;
-  padding: 1vmax;
-  border-radius: 30px;
+  margin-top: 10px;
+  width: 60%;
+  height: 25px;
+  border-radius: 3px;
   border: none;
   font: normal 1rem var(--defaultFont);
+  cursor: pointer;
 }
 
 .registerForm>a {

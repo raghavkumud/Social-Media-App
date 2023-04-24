@@ -1,4 +1,4 @@
-import { Avatar, Typography, Button } from "@mui/material";
+import { Avatar, Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import "./UpdateProfile.css";
 import { loadUser, updateProfile } from "../../Actions/User";
@@ -30,6 +30,7 @@ const UpdateProfile = () => {
     }
     if (message) {
       alert.success(message);
+      dispatch({ type: "clearMessage" });
     }
   }, [dispatch, error, updateError, alert, message]);
   const submitHandler = async (e) => {

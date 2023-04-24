@@ -5,7 +5,6 @@ import Login from "./components/Login/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { loadUser } from "./Actions/User";
 import { useEffect } from "react";
-import store from "./store";
 import HomePage from "./components/Home/Home";
 import Account from "./components/Account/Account";
 import NewPost from "./components/NewPost/NewPost";
@@ -21,10 +20,11 @@ import NotFound from "./components/NotFound/NotFound";
 function App() {
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state) => state.user);
-  console.log(isAuthenticated);
   useEffect(() => {
-    dispatch(loadUser());
-  }, [dispatch]);
+    if (isAuthenticated) {
+      dispatch(loadUser());
+    }
+  }, [dispatch, isAuthenticated]);
   return (
     <Router>
       {isAuthenticated && <Header />}

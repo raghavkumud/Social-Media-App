@@ -31,6 +31,7 @@ const Login = () => {
   return (
     <div className="login">
       <form className="loginForm" onSubmit={loginHandler}>
+        <h3>Sign In</h3>
         <input
           type="email"
           placeholder="Email"
