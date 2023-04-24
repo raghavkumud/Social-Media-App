@@ -5,7 +5,7 @@ export const loginUser = (email, password) => async (dispatch) => {
       type: "LoginRequest",
     });
     const { data } = await axios.post(
-      "users/login",
+      "/users/login",
       { email, password },
       {
         headers: {
@@ -84,7 +84,7 @@ export const getAllUsers =
       dispatch({
         type: "allUsersRequest",
       });
-      const { data } = await axios.get(`users?name=${name}`);
+      const { data } = await axios.get(`/users?name=${name}`);
       dispatch({
         type: "allUsersSuccess",
         payload: data.users,
