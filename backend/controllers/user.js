@@ -51,7 +51,6 @@ exports.login = async (req, res) => {
         message: "User does not exists",
       });
     }
-    throw Error('User is not found');
     const isMatch = await user.matchPassword(password);
 
     if (!isMatch) {
