@@ -6,13 +6,14 @@ import "./Login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../Actions/User";
 import { useAlert } from "react-alert";
+import SpinningLoader from "../SpinningLoader/SpinningLoader";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const alert = useAlert();
-  const { error, message } = useSelector((state) => state.user);
+  const { error, message, loading } = useSelector((state) => state.user);
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -30,7 +31,8 @@ const Login = () => {
   };
   return (
     <div className="login">
-      <form className="loginForm" onSubmit={loginHandler}>
+    {loading && <SpinningLoader/>}
+      {!loading && <form className="loginForm" onSubmit={loginHandler}>
         <h3>Sign In</h3>
         <input
           type="email"
@@ -55,7 +57,7 @@ const Login = () => {
         <Link to="/register">
           <Typography style={{ color: "lightblue" }}>New User</Typography>
         </Link>
-      </form>
+      </form>}
     </div>
   );
 };
