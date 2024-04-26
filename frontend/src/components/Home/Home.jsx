@@ -21,11 +21,11 @@ export default function HomePage() {
     useEffect(() => {
         if (likeError) {
             alert.error(likeError);
-            dispatch({type: "clearErrors"})
+            dispatch({type: "likeClearErrors"})
         }
         if (message) {
             alert.success(message);
-            dispatch({type: "clearMessage"})
+            dispatch({type: "likeClearMessage"})
         }
     }, [alert, likeError, message, error, dispatch])
 

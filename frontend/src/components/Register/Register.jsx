@@ -36,11 +36,11 @@ const Register = () => {
       console.log({
         message: "error occurred in the register part",
       });
-      dispatch({ type: "clearErrors" });
+      dispatch({ type: "UserClearErrors" });
     }
     if (message) {
       alert.success(message);
-      dispatch({ type: "clearMessage" });
+      dispatch({ type: "UserClearMessage" });
     }
   }, [dispatch, error, alert, message]);
   return (

@@ -31,11 +31,11 @@ const NewPost = () => {
   useEffect(() => {
     if (error) {
       alert.error(error);
-      dispatch({ type: "clearErrors" });
+      dispatch({ type: "likeClearErrors" });
     }
     if (message) {
       alert.success(message);
-      dispatch({ type: "clearMessage" });
+      dispatch({ type: "likeClearMessage" });
     }
   }, [error, message, alert, dispatch]);
   return (

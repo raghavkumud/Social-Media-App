@@ -69,8 +69,11 @@ export const likeReducer = createReducer(initialState, {
     state.loading = false;
     state.error = action.payload;
   },
-  clearErrors: (state, action) => {
+  likeClearErrors: (state, action) => {
     state.error = null;
+  },
+  likeClearMessage: (state, action) => {
+    state.message = null;
   },
   updatePasswordRequest: (state, action) => {
     state.loading = true;
@@ -173,7 +176,7 @@ export const userPostsReducer = createReducer(initialState, {
     state.loading = false;
     state.error = action.payload;
   },
-  clearErrors: (state) => {
+  userPostClearErrors: (state) => {
     state.error = null;
   },
 });

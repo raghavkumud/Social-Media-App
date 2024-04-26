@@ -21,16 +21,16 @@ const UpdateProfile = () => {
   useEffect(() => {
     if (error) {
       alert.error(error);
-      dispatch({ type: "clearErrors" });
+      dispatch({ type: "UserClearErrors" });
     }
 
     if (updateError) {
       alert.error(updateError);
-      dispatch({ type: "clearErrors" });
+      dispatch({ type: "likeClearErrors" });
     }
     if (message) {
       alert.success(message);
-      dispatch({ type: "clearMessage" });
+      dispatch({ type: "likeClearMessage" });
     }
   }, [dispatch, error, updateError, alert, message]);
   const submitHandler = async (e) => {

@@ -58,9 +58,12 @@ export const userReducer = createReducer(initialState, {
     state.error = action.payload;
     state.isAuthenticated = true;
   },
-  ClearErrors: (state) => {
+  UserClearErrors: (state) => {
     state.error = null;
   },
+  UserClearMessage: (state) => {
+    state.message = null;
+  }
 });
 export const postOfFollowingReducer = createReducer(initialState, {
   PostOfFollowingRequest: (state) => {
@@ -107,7 +110,7 @@ export const userProfileReducer = createReducer(initialState, {
     state.loading = false;
     state.error = action.payload;
   },
-  ClearErrors: (state) => {
+  userProfileClearErrors: (state) => {
     state.error = null;
   },
 });

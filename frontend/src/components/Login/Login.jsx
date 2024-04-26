@@ -17,11 +17,11 @@ const Login = () => {
   useEffect(() => {
     if (error) {
       alert.error(error);
-      dispatch({ type: "clearErrors" });
+      dispatch({ type: "UserClearErrors" });
     }
     if (message) {
       alert.success(message);
-      dispatch({ type: "clearMessage" });
+      dispatch({ type: "UserClearMessage" });
     }
   }, [error, alert, dispatch, message]);
   const loginHandler = (e) => {

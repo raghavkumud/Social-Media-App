@@ -59,19 +59,19 @@ const UserProfile = () => {
   useEffect(() => {
     if (postError) {
       alert.error(postError);
-      dispatch({ type: "clearErrors" });
+      dispatch({ type: "userPostClearErrors" });
     }
     if (userError) {
       alert.error(userError);
-      dispatch({ type: "clearErrors" });
+      dispatch({ type: "userProfileClearErrors" });
     }
     if (followError) {
       alert.error(followError);
-      dispatch({ type: "clearErrors" });
+      dispatch({ type: "likeClearErrors" });
     }
     if (message) {
       alert.success(message);
-      dispatch({ type: "clearMessage" });
+      dispatch({ type: "likeClearMessage" });
     }
   }, [alert, followError, message, userError, dispatch, postError]);
   const logOutHandler = async () => {

@@ -19,11 +19,11 @@ const ForgotPassword = () => {
   useEffect(() => {
     if (error) {
       alert.error(error);
-      dispatch({ type: "clearErrors" });
+      dispatch({ type: "likeClearErrors" });
     }
     if (message) {
       alert.success(message);
-      dispatch({ type: "clearMessage" });
+      dispatch({ type: "likeClearMessage" });
     }
   }, [alert, error, message, dispatch]);
   return (
