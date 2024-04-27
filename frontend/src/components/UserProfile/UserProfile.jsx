@@ -39,6 +39,8 @@ const UserProfile = () => {
   const [myProfile, setMyProfile] = useState(false);
   const alert = useAlert();
   const params = useParams();
+  console.log(params);
+  const [userId, setUserId] = useState(params.id);
   const navigate = useNavigate();
   const followHandler = async (e) => {
     e.preventDefault();
@@ -89,6 +91,8 @@ const UserProfile = () => {
     }
   }, [user, me._id, params.id]);
 
+
+
   const deleteProfileHandler = async (e) => {
     await dispatch(deleteMyProfile());
     alert.success("Profile Deleted Successfully");
@@ -97,8 +101,8 @@ const UserProfile = () => {
   };
   return loading || userLoading ? (
     <Loader />
-  ) : (
-    <div className="account">
+  ) : ( userId &&
+      <div className="account">
       <div className="accountleft">
         {posts && posts.length > 0 ? (
           posts.map((post) => {
@@ -182,7 +186,7 @@ const UserProfile = () => {
           </>
         )}
 
-        <Dialog
+        {followersToggle && <Dialog
           open={followersToggle}
           onClose={() => setFollowersToggle(!followersToggle)}
         >
@@ -206,8 +210,8 @@ const UserProfile = () => {
               </Typography>
             )}
           </div>
-        </Dialog>
-        <Dialog
+        </Dialog>}
+        {followingToggle && <Dialog
           open={followingToggle}
           onClose={() => setFollowingToggle(!followingToggle)}
         >
@@ -230,7 +234,7 @@ const UserProfile = () => {
               </Typography>
             )}
           </div>
-        </Dialog>
+        </Dialog>}
       </div>
     </div>
   );

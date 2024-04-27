@@ -41,6 +41,7 @@ const Account = () => {
     await dispatch(deleteMyProfile());
     dispatch(logOutUser());
   }
+
   return loading || userLoading ? (
     <Loader />
   ) : (
@@ -107,7 +108,7 @@ const Account = () => {
         >
           Delete My Profile
         </Button>
-      <Dialog open={followersToggle} onClose={() => setFollowersToggle(!followersToggle)}>
+      {followersToggle && <Dialog open={followersToggle} onClose={() => setFollowersToggle(!followersToggle)}>
         <div className="DialogBox">
           <Typography variant="h4">Followers </Typography>
           {
@@ -121,8 +122,8 @@ const Account = () => {
              })) : <Typography>You don't have any followers</Typography>
           }
         </div>
-      </Dialog>
-      <Dialog open={followingToggle} onClose={() => setFollowingToggle(!followingToggle)}>
+      </Dialog>}
+      {followingToggle && <Dialog open={followingToggle} onClose={() => setFollowingToggle(!followingToggle)}>
         <div className="DialogBox">
           <Typography variant="h4">Following </Typography>
           {
@@ -136,7 +137,7 @@ const Account = () => {
              })) : <Typography>You aren't following anyone</Typography>
           }
         </div>
-      </Dialog>
+      </Dialog>}
 
       </div>
     </div>

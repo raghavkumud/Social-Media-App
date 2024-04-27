@@ -6,7 +6,7 @@ import "./Login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../Actions/User";
 import { useAlert } from "react-alert";
-import SpinningLoader from "../SpinningLoader/SpinningLoader";
+import Loader from "../Loader/Loader";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -31,33 +31,35 @@ const Login = () => {
   };
   return (
     <div className="login">
-    {loading && <SpinningLoader/>}
-      {!loading && <form className="loginForm" onSubmit={loginHandler}>
-        <h3>Sign In</h3>
-        <input
-          type="email"
-          placeholder="Email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <Link to="/forgot/password">
-          <Typography style={{ padding: "10px" }}>Forgot Password</Typography>
-        </Link>
-        <Button id="loginBtn" type="submit">
-          Login
-        </Button>
-        <Link to="/register">
-          <Typography style={{ color: "lightblue" }}>New User</Typography>
-        </Link>
-      </form>}
+      {loading && <Loader />}
+      {!loading && (
+        <form className="loginForm" onSubmit={loginHandler}>
+          <h3>Sign In</h3>
+          <input
+            type="email"
+            placeholder="Email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Link to="/forgot/password">
+            <Typography style={{ padding: "10px" }}>Forgot Password</Typography>
+          </Link>
+          <Button id="loginBtn" type="submit">
+            Login
+          </Button>
+          <Link to="/register">
+            <Typography style={{ color: "lightblue" }}>New User</Typography>
+          </Link>
+        </form>
+      )}
     </div>
   );
 };
