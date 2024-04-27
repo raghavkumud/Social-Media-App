@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Login from "./components/Login/Login";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,6 +25,8 @@ function App() {
       dispatch(loadUser());
     }
   }, [dispatch, isAuthenticated]);
+
+  const params = useParams();
   return (
     <Router>
       {isAuthenticated && <Header />}
@@ -73,7 +75,7 @@ function App() {
         <Route
           exact
           path="/user/:id"
-          element={isAuthenticated ? <UserProfile /> : <Login />}
+          element={isAuthenticated ? <UserProfile id={params.id} /> : <Login />}
         />
         <Route path="/search" element={<Search />} />
         <Route path="*" element={<NotFound />} />
